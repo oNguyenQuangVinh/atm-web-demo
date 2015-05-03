@@ -1,0 +1,26 @@
+﻿@model string
+@{
+    ViewBag.Title = "TransferCashAmount";
+}
+
+<h2>Transfer Cash Amount</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Transfer Cash Amount</legend>
+
+        <div class="editor-label">
+            Nhập số tiền cần chuyển:
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("txtamount", null, new { @class = "textbox" })
+            <p>Nhập bằng bàn phím ảo. Ấn "Enter" để xác nhận</p>
+            <p><a id="message">@ViewBag.Error</a></p>
+        </div>
+        <input type="submit" value="Xác Nhận" class="btnSubmit" id="hidden" />
+    </fieldset>
+}
+
+

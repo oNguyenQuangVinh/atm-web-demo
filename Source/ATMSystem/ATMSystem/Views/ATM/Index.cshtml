@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ATMSystem.Models.ATM>
+@{
+    ViewBag.Title = "Chọn ATM";
+}
+
+<fieldset>
+    <legend>Vui lòng chọn ATM bạn muốn giao dịch ! </legend>
+
+
+    <table>
+        <tr>
+            <th>Branch
+            </th>
+            <th>Address
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Branch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.ActionLink("Select", "Select", new { id = item.ATMID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</fieldset>

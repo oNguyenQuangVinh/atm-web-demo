@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "CheckBalanceMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<h2>Kiểm Tra Số Dư</h2>
+@using (Html.BeginForm("CheckBalanceMenu", "Account", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Chọn hình thức kiểm tra số dư tài khoản</legend>
+        <input type="submit" name="submitButton" value="  Hiển Thị  " class="awesome" />
+        <input type="submit" name="submitButton" value="In Hóa Đơn" class="awesome" />
+
+    </fieldset>
+}

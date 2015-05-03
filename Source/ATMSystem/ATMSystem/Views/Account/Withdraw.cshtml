@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Rút tiền";
+}
+
+<h2>Withdraw</h2>
+@using (Html.BeginForm("Withdraw", "Account", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Chọn số tiền</legend>
+        <input type="submit" name="submitButton" value="500" />
+        <input type="submit" name="submitButton" value="1000" />
+        <input type="submit" name="submitButton" value="2000" />
+        <input type="submit" name="submitButton" value="2500" />
+        <input type="submit" name="submitButton" value="3000" />
+        <input type="submit" name="submitButton" value="Other" />
+        <br />
+        <p><a id="message">@ViewBag.Error</a></p>
+        @ViewBag.money
+
+    </fieldset>
+         
+}

@@ -1,0 +1,19 @@
+﻿@model ATMSystemGroup4.Models.Account
+@{
+    ViewBag.Title = "Rút tiền";
+}
+
+<h2>Nhập số tiền cần rút</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Nhập số tiền cần rút</legend>
+        @Html.TextBoxFor(model => model.Balance, new { @class = "textbox" })
+        <br />
+        <input type="submit" value="Rút" id="hidden" class="btnSubmit" />
+        <p><a id="message">@ViewBag.Error</a></p>
+        @ViewBag.money
+    </fieldset>
+ 
+}
+
