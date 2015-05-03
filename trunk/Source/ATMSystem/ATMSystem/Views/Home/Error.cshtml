@@ -1,0 +1,13 @@
+﻿@model string
+@{
+    ViewBag.Title = "Error";
+}
+<h2>Error</h2>
+
+<p>
+    Có lỗi xảy ra:
+    <p><a id="message">@ViewBag.Notis</a></p>
+</p>
+<p>
+    @Html.ActionLink("Đưa Thẻ Vào", "Index", "ATM")
+</p>

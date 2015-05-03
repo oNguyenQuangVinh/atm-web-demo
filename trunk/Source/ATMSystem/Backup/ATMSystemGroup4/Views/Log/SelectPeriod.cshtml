@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Lịch sử";
+}
+
+<h2>Chọn khoảng thời gian cần xem lịch sử giao dịch !</h2>
+@using (Html.BeginForm("SelectPeriod", "Log", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Khoảng thời gian</legend>
+        <input type="submit" name="submitButton" value="1 Week ago" />
+        <input type="submit" name="submitButton" value="1 Month ago" />
+        <input type="submit" name="submitButton" value="4 Months ago" />
+        <input type="submit" name="submitButton" value="6 Months ago" />
+        <input type="submit" name="submitButton" value="1 Year ago" />
+        <input type="submit" name="submitButton" value="2 Years ago" />
+    </fieldset>
+    
+    
+}

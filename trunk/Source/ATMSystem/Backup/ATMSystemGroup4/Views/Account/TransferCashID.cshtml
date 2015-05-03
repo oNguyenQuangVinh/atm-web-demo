@@ -1,0 +1,37 @@
+﻿@model ATMSystemGroup4.Models.Account
+@{
+    ViewBag.Title = "TransferCashID";
+}
+
+<h2>Transfer Cash ID</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Transfer Cash ID</legend>
+
+        <div class="editor-label">
+            Tên chủ tài khoản gửi: @ViewBag.CusNameFrom
+        </div>
+        <div class="editor-label">
+            ID chủ tài khoản gửi: @ViewBag.AccIDFrom
+        </div>
+        <div class="editor-label">
+            ID tài khoản nhận: 
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AccountID, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.AccountID)
+            <p>Nhập bằng bàn phím ảo. Ấn "Enter" để xác nhận</p>
+            <p><a id="message">@ViewBag.Error</a></p>
+        </div>
+
+        <p>
+            <input type="submit" value="Xác Nhận" id="hidden" class="btnSubmit" />
+        </p>
+    </fieldset>
+}

@@ -1,0 +1,20 @@
+﻿@using ATMSystem.Models
+
+@{
+    ViewBag.Title = "CheckBalance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kiểm Tra Số Dư</h2>
+<fieldset>
+    <legend>Check Balance</legend>
+    <div class="editor-label">
+        Số dư hiện tại là: @ViewBag.balanc VNĐ
+         <br />
+        <p>
+            Giao dịch thành công. Quý khách vui lòng Click "Cancle" để trở về trang chủ!
+        </p>
+    </div>
+</fieldset>
+
+<p>@ViewBag.Error</p>

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Chọn Chức Năng";
+}
+@section Header{
+    <li>@Html.ActionLink("Withdraw", "Withdraw", "Account")</li>
+    <li>@Html.ActionLink("Check Balance", "CheckBalanceMenu", "Account")</li>
+    <li>@Html.ActionLink("Transfer Cash", "TransferCashID", "Account")</li>
+    <li>@Html.ActionLink("View History", "SelectPeriod", "Log")</li>
+    <li>@Html.ActionLink("Change PIN", "ChangePINold", "Card")</li>
+}
+<h2>@ViewBag.Message</h2>
+
+<p>
+    @ViewBag.Inviting
+</p>
+<div>
+    <p>
+        @Html.ActionLink("Kết thúc giao dịch", "Exit", "Home")
+    </p>
+</div>

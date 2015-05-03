@@ -1,0 +1,26 @@
+﻿@model ATMSystemGroup4.Models.Account
+@{
+    ViewBag.Title = "TransferCashConfirm";
+}
+
+<h2>Transfer Cash Confirm</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Transfer Cash Confirm</legend>
+
+        <div class="editor-label">
+            ID tài khoản nhận: @ViewBag.AccountToID
+        </div>
+        <div class="editor-label">
+            Tên tài khoản nhận: @ViewBag.CusNameTo
+        </div>
+        <div class="editor-label">
+            Số tiền chuyển: @ViewBag.AmountTrans
+        </div>
+        <input type="submit" value="Xác Nhận" class="btnSubmit" id="hidden" />
+    </fieldset>
+}
+

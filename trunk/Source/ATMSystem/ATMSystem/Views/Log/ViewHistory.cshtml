@@ -1,0 +1,54 @@
+﻿@model PagedList.IPagedList<ATMSystemGroup4.Models.Log>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Lịch sử";
+}
+
+<h2>View History</h2>
+<fieldset>
+    <legend>Lịch sử @ViewBag.Period trước (Có @ViewBag.CountLogs bản ghi )</legend>
+
+    <table>
+        <tr>
+            <th>ATM (Location)
+            </th>
+            <th>LogType
+            </th>
+            <th>LogDate
+            </th>
+            <th>Amount (VNĐ)
+            </th>
+            <th>Details
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ATM.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogType.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+    <div id="page">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("ViewHistory", "Log", new { page = page, period = @ViewBag.Period }))
+    </div>
+</fieldset>

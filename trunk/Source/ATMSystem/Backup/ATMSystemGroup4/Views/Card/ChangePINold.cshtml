@@ -1,0 +1,33 @@
+﻿@model ATMSystemGroup4.Models.Card
+@{
+    ViewBag.Title = "ChangePINold";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nhập mã PIN hiện tại!</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Change PIN</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PIN)
+        </div>
+        <div class="editor-field">
+            @Html.Password("txtOldPin", null, new { @class = "textbox" })
+            <p><a id="message">@ViewBag.Error</a></p>
+            <br/>Nhập bằng bàn phím MÁY TÍNH. Ấn "Enter" để xác nhận
+
+        </div>
+        <p>
+            <input type="submit" value="Validate" class="btnSubmit" id="hidden" />
+        </p>
+    </fieldset>
+}
+
+<div>
+</div>

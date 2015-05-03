@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "SuccessTransAsking";
+}
+
+<h2>Successfull Transaction Asking</h2>
+
+@using (Html.BeginForm("SuccessTransAsking", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Giao Dịch Thành Công ! </legend>
+        Bạn có muốn tiếp tục giao dịch không ?
+        <input type="submit" name="submitButton" value="Yes" />
+        <input type="submit" name="submitButton" value="No" />
+    </fieldset>
+}
