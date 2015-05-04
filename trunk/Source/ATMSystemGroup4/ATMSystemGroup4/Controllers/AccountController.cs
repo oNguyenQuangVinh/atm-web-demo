@@ -15,6 +15,7 @@ namespace ATMSystemGroup4.Controllers
         private ATM_SystemEntities db = new ATM_SystemEntities();
 
 
+      
         // TransferCashID
         //
         // GET: /Account/TransferCashID
@@ -167,7 +168,7 @@ namespace ATMSystemGroup4.Controllers
             lc = new LogController();
             // Details chỉ đến tên chủ tài khoản + AccNo
             string detailsFrom = "Transfer cash to " + accountTo.Customer.Name + " AccountID: " + accountTo.AccountID;
-            lc.WriteLog(2, 1, card.CardNo, amount, detailsFrom);
+            lc.WriteLog(2, atm.ATMID, card.CardNo, amount, detailsFrom);
 
             //string detailsTo = "Receive cash from " + accountFrom.Customer.Name + " AccountID: " + accountFrom.AccountID;
 
