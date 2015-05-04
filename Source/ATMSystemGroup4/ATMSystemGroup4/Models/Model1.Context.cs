@@ -13,10 +13,10 @@ namespace ATMSystemGroup4.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ATMSystemEntities : DbContext
+    public partial class ATM_SystemEntities : DbContext
     {
-        public ATMSystemEntities()
-            : base("name=ATMSystemEntities")
+        public ATM_SystemEntities()
+            : base("name=ATM_SystemEntities")
         {
         }
     
@@ -28,14 +28,13 @@ namespace ATMSystemGroup4.Models
         public DbSet<Account> Accounts { get; set; }
         public DbSet<ATM> ATMs { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Config> Configs { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<LogType> LogTypes { get; set; }
         public DbSet<MoneyType> MoneyTypes { get; set; }
         public DbSet<OverDraftLimit> OverDraftLimits { get; set; }
         public DbSet<Stock> Stocks { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<WithDrawLimit> WithDrawLimits { get; set; }
-        public DbSet<Config> Configs { get; set; }
     }
 }

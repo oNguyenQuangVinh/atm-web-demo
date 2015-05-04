@@ -11,7 +11,7 @@ namespace ATMSystemGroup4.Controllers
 {
     public class ATMController : Controller
     {
-        private ATMSystemEntities db = new ATMSystemEntities();
+        private ATM_SystemEntities db = new ATM_SystemEntities();
 
         //
         // GET: /ATM/

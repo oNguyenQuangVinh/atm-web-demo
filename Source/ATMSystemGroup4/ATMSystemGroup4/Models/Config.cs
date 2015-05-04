@@ -18,6 +18,5 @@ namespace ATMSystemGroup4.Models
         public Nullable<System.DateTime> DateModified { get; set; }
         public Nullable<decimal> MinWithDraw { get; set; }
         public Nullable<decimal> MaxWithDraw { get; set; }
-        public Nullable<int> NumPerPage { get; set; }
     }
 }

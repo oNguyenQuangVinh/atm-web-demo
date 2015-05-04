@@ -4,28 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="19c1cc3dd4b5436190cad71a5e24f7fc" Name="Diagram1">
-        <EntityTypeShape EntityType="ATMSystemModel.Account" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.ATM" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.Card" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.Customer" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.Log" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.LogType" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.MoneyType" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.OverDraftLimit" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.Stock" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.sysdiagram" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATMSystemModel.WithDrawLimit" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="ATMSystemModel.FK_Accounts_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Accounts_OverDraftLimits1" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Accounts_WithDrawLimits" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Cards_Accounts" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Logs_ATMs" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Stocks_ATMs" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Logs_Cards" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Logs_LogTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="ATMSystemModel.FK_Stocks_MoneyTypes" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ATMSystemModel.Config" Width="1.5" PointX="0.75" PointY="9.75" />
+      <Diagram DiagramId="a4b31dfb03af404abfd6011a62ec06bf" Name="Diagram1">
+        <EntityTypeShape EntityType="ATM_SystemModel.Account" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.ATM" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.Card" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.Config" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.Customer" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.Log" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.LogType" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.MoneyType" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.OverDraftLimit" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.Stock" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATM_SystemModel.WithDrawLimit" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Accounts_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Accounts_OverDraftLimits" ManuallyRouted="false" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Accounts_WithDrawLimits" ManuallyRouted="false" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Cards_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Logs_Cards" ManuallyRouted="false" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Logs_LogTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ATM_SystemModel.FK_Stocks_MoneyTypes" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

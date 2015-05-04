@@ -12,7 +12,7 @@ namespace ATMSystemGroup4.Controllers
     public class AccountController : Controller
     {
         private LogController lc;
-        private ATMSystemEntities db = new ATMSystemEntities();
+        private ATM_SystemEntities db = new ATM_SystemEntities();
 
 
         // TransferCashID
@@ -167,7 +167,7 @@ namespace ATMSystemGroup4.Controllers
             lc = new LogController();
             // Details chỉ đến tên chủ tài khoản + AccNo
             string detailsFrom = "Transfer cash to " + accountTo.Customer.Name + " AccountID: " + accountTo.AccountID;
-            lc.WriteLog(2, atm.ATMID, card.CardNo, amount, detailsFrom);
+            lc.WriteLog(2, 1, card.CardNo, amount, detailsFrom);
 
             //string detailsTo = "Receive cash from " + accountFrom.Customer.Name + " AccountID: " + accountFrom.AccountID;
 
@@ -216,7 +216,7 @@ namespace ATMSystemGroup4.Controllers
 
             lc = new LogController();
             string detailsFrom = "";
-            lc.WriteLog(3, atm.ATMID, card.CardNo, 0, detailsFrom);
+            lc.WriteLog(3, 1, card.CardNo, 0, detailsFrom);
 
             return View();
         }
@@ -291,8 +291,8 @@ namespace ATMSystemGroup4.Controllers
                 //break;
             }
             kiemTraAcc = checkAccount(amount, account);// goi ham kiem tra  tai khoan account
-            kiemTraAtm = checkATM(amount, atm); // goi ham kiem tra tien trong ATM
-            string kiemTraType = checkTypeMoney(amount, atm); // goi ham kiem tra tung menh gia trong ATM
+            kiemTraAtm = checkATM(amount); // goi ham kiem tra tien trong ATM
+            string kiemTraType = checkTypeMoney(amount); // goi ham kiem tra tung menh gia trong ATM
             kiemTraLimitWithdraw = checkLimitWithdraw(amount, account);//goi ham kiem tra gioi han rut tien cua tai khoan
             if (kiemTraAcc == true && kiemTraAtm == true && kiemTraLimitWithdraw == true && kiemTraType != "")
             {
@@ -302,7 +302,7 @@ namespace ATMSystemGroup4.Controllers
                 //ghi log
                 lc = new LogController();
                 string detailsFrom = "";
-                lc.WriteLog(1, atm.ATMID, card.CardNo, amount, detailsFrom);
+                lc.WriteLog(1, 1, card.CardNo, amount, detailsFrom);
                 // goi ham tru tien o ATM và hien view so tien ma khach se nhan duoc
                 ViewBag.money = kiemTraType;
                 db.SaveChanges();
@@ -344,8 +344,8 @@ namespace ATMSystemGroup4.Controllers
                     Account account = db.Accounts.Find(card.AccountID);
                     bool kiemTraAcc, kiemTraAtm, kiemTraLimitWithdraw;
                     kiemTraAcc = checkAccount(amount, account);// goi ham kiem tra  tai khoan account
-                    kiemTraAtm = checkATM(amount, atm); // goi ham kiem tra tien trong ATM
-                    string kiemTraType = checkTypeMoney(amount, atm); // goi ham kiem tra tung menh gia trong ATM
+                    kiemTraAtm = checkATM(amount); // goi ham kiem tra tien trong ATM
+                    string kiemTraType = checkTypeMoney(amount); // goi ham kiem tra tung menh gia trong ATM
                     kiemTraLimitWithdraw = checkLimitWithdraw(amount, account);//goi ham kiem tra gioi han rut tien cua tai khoan
                     if (kiemTraAcc == true && kiemTraAtm == true && kiemTraLimitWithdraw == true && kiemTraType != "")
                     {
@@ -355,7 +355,7 @@ namespace ATMSystemGroup4.Controllers
                         //ghi log
                         lc = new LogController();
                         string detailsFrom = "";
-                        lc.WriteLog(1, atm.ATMID, card.CardNo, amount, detailsFrom);
+                        lc.WriteLog(1, 1, card.CardNo, amount, detailsFrom);
                         // goi ham tru tien o ATM và hien view so tien ma khach se nhan duoc
                         ViewBag.money = kiemTraType;
                         db.SaveChanges();
@@ -403,25 +403,26 @@ namespace ATMSystemGroup4.Controllers
         //////////////////////////////////////////////////////////////////////////
         // kiem tra tien trong Atm co du de rut khong?
         // neu ham tra True thi du va nguoc lai thi khong du
-        public bool checkATM(decimal amount, ATM atm)
+        public bool checkATM(decimal amount)
         {
-            bool kiemTra = false;
-            // loc cac kho chua tien cua cay ATM dang rut
-            var stock = from e in db.Stocks
-                        where e.ATMID == atm.ATMID
-                        select e;
-            IList<Stock> listStock = stock.ToList<Stock>();
-            decimal money = 0;
-            // tinh tong tien co trong cay Atm dang rut
-            foreach (Stock i in listStock)
-            {
-                money += (decimal)(i.MoneyType.MoneyValue * i.Quantity);
-            }
-            if (amount <= money)
-            {
-                kiemTra = true;
-            }
-            return kiemTra;
+            //bool kiemTra = false;
+            //// loc cac kho chua tien cua cay atm dang rut
+            //var stock = from e in db.stocks
+            //            where e.atmid == atm.atmid
+            //            select e;
+            //ilist<stock> liststock = stock.tolist<stock>();
+            //decimal money = 0;
+            //// tinh tong tien co trong cay atm dang rut
+            //foreach (stock i in liststock)
+            //{
+            //    money += (decimal)(i.moneytype.moneyvalue * i.quantity);
+            //}
+            //if (amount <= money)
+            //{
+            //    kiemtra = true;
+            //}
+            //return kiemtra;
+            return true;
         }
 
 
@@ -441,12 +442,11 @@ namespace ATMSystemGroup4.Controllers
         // kiem tra cac menh gia cua cay Atm dang rut phu hop voi so tien muon rut k?
         // mỗi kho là một loại mệnh giá
         // hàm trả giá trị "" thì khong du , neu dủ thì nó sẽ hiển thị số luong từng mệnh giá mà khách nhận được 
-        public string checkTypeMoney(decimal amount, ATM atm)
+        public string checkTypeMoney(decimal amount)
         {
             //   bool kiemtra = false;
             string s = "";
             var stock = from e in db.Stocks
-                        where e.ATMID == atm.ATMID
                         select e;
             IList<Stock> listStock = stock.ToList<Stock>();
             // int du500, du200, du100, du50, to500, to200, to100, to50;
@@ -481,7 +481,7 @@ namespace ATMSystemGroup4.Controllers
                         {
                             if (((i * 50000 + j * 100000 + k * 200000 + m * 500000) == amount) && (m <= type500) && (k <= type200) && (j <= type100) && (i <= type50))
                             {
-                                trutien(atm, m, k, j, i);
+                                trutien(m, k, j, i);
                                 return s = "Quý khách nhận được " + m + " tờ 500000, " + k + " tờ 200000, "
                                     + j + " tờ 100000, " + i + " tờ 50000 ";
                             }
@@ -496,10 +496,9 @@ namespace ATMSystemGroup4.Controllers
 
         /// ////////////////////////////////////////////////////////
         // ham tru tien trong cay atm
-        public void trutien(ATM atm, int to500, int to200, int to100, int to50)
+        public void trutien(int to500, int to200, int to100, int to50)
         {
             var stock = from e in db.Stocks
-                        where e.ATMID == atm.ATMID
                         select e;
             IList<Stock> listStock = stock.ToList<Stock>();
             foreach (Stock i in listStock)

@@ -16,10 +16,8 @@ namespace ATMSystemGroup4.Models
     {
         public int StockID { get; set; }
         public Nullable<int> MoneyTypeID { get; set; }
-        public Nullable<int> ATMID { get; set; }
         public Nullable<int> Quantity { get; set; }
     
-        public virtual ATM ATM { get; set; }
         public virtual MoneyType MoneyType { get; set; }
     }
 }
