@@ -21,9 +21,9 @@ namespace ATMSystemGroup4.Models
     
         public int AccountID { get; set; }
         public Nullable<int> CustID { get; set; }
-        public string AccountNo { get; set; }
         public Nullable<int> ODID { get; set; }
         public Nullable<int> WDID { get; set; }
+        public string AccountNo { get; set; }
         public Nullable<decimal> Balance { get; set; }
     
         public virtual Customer Customer { get; set; }

@@ -4,25 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ATMSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ATM_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accounts">
           <Key>
             <PropertyRef Name="AccountID" />
           </Key>
           <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustID" Type="int" />
-          <Property Name="AccountNo" Type="varchar" MaxLength="50" />
           <Property Name="ODID" Type="int" />
           <Property Name="WDID" Type="int" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="50" />
           <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="ATMs">
+        <EntityType Name="ATM">
           <Key>
             <PropertyRef Name="ATMID" />
           </Key>
-          <Property Name="ATMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ATMID" Type="int" Nullable="false" />
           <Property Name="Branch" Type="nvarchar" MaxLength="50" />
-          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Cards">
           <Key>
@@ -44,7 +44,6 @@
           <Property Name="DateModified" Type="datetime" />
           <Property Name="MinWithDraw" Type="decimal" Precision="18" Scale="0" />
           <Property Name="MaxWithDraw" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="NumPerPage" Type="int" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -62,7 +61,6 @@
           </Key>
           <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LogTypeID" Type="int" />
-          <Property Name="ATMID" Type="int" />
           <Property Name="CardNo" Type="varchar" MaxLength="16" />
           <Property Name="LogDate" Type="datetime" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
@@ -95,18 +93,7 @@
           </Key>
           <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MoneyTypeID" Type="int" />
-          <Property Name="ATMID" Type="int" />
           <Property Name="Quantity" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="WithDrawLimits">
           <Key>
@@ -127,7 +114,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Accounts_OverDraftLimits1">
+        <Association Name="FK_Accounts_OverDraftLimits">
           <End Role="OverDraftLimits" Type="Self.OverDraftLimits" Multiplicity="0..1" />
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,18 +150,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Logs_ATMs">
-          <End Role="ATMs" Type="Self.ATMs" Multiplicity="0..1" />
-          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATMs">
-              <PropertyRef Name="ATMID" />
-            </Principal>
-            <Dependent Role="Logs">
-              <PropertyRef Name="ATMID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Logs_Cards">
           <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
           <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
@@ -199,18 +174,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Stocks_ATMs">
-          <End Role="ATMs" Type="Self.ATMs" Multiplicity="0..1" />
-          <End Role="Stocks" Type="Self.Stocks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATMs">
-              <PropertyRef Name="ATMID" />
-            </Principal>
-            <Dependent Role="Stocks">
-              <PropertyRef Name="ATMID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Stocks_MoneyTypes">
           <End Role="MoneyTypes" Type="Self.MoneyTypes" Multiplicity="0..1" />
           <End Role="Stocks" Type="Self.Stocks" Multiplicity="*" />
@@ -223,9 +186,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ATMSystemModelStoreContainer">
+        <EntityContainer Name="ATM_SystemModelStoreContainer">
           <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ATMs" EntityType="Self.ATMs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATM" EntityType="Self.ATM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Configs" EntityType="Self.Configs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
@@ -234,13 +197,12 @@
           <EntitySet Name="MoneyTypes" EntityType="Self.MoneyTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OverDraftLimits" EntityType="Self.OverDraftLimits" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WithDrawLimits" EntityType="Self.WithDrawLimits" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Accounts_Customers" Association="Self.FK_Accounts_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Accounts" EntitySet="Accounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Accounts_OverDraftLimits1" Association="Self.FK_Accounts_OverDraftLimits1">
+          <AssociationSet Name="FK_Accounts_OverDraftLimits" Association="Self.FK_Accounts_OverDraftLimits">
             <End Role="OverDraftLimits" EntitySet="OverDraftLimits" />
             <End Role="Accounts" EntitySet="Accounts" />
           </AssociationSet>
@@ -252,10 +214,6 @@
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Cards" EntitySet="Cards" />
           </AssociationSet>
-          <AssociationSet Name="FK_Logs_ATMs" Association="Self.FK_Logs_ATMs">
-            <End Role="ATMs" EntitySet="ATMs" />
-            <End Role="Logs" EntitySet="Logs" />
-          </AssociationSet>
           <AssociationSet Name="FK_Logs_Cards" Association="Self.FK_Logs_Cards">
             <End Role="Cards" EntitySet="Cards" />
             <End Role="Logs" EntitySet="Logs" />
@@ -264,31 +222,28 @@
             <End Role="LogTypes" EntitySet="LogTypes" />
             <End Role="Logs" EntitySet="Logs" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stocks_ATMs" Association="Self.FK_Stocks_ATMs">
-            <End Role="ATMs" EntitySet="ATMs" />
-            <End Role="Stocks" EntitySet="Stocks" />
-          </AssociationSet>
           <AssociationSet Name="FK_Stocks_MoneyTypes" Association="Self.FK_Stocks_MoneyTypes">
             <End Role="MoneyTypes" EntitySet="MoneyTypes" />
             <End Role="Stocks" EntitySet="Stocks" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ATMSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ATM_SystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="AccountID" />
           </Key>
           <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustID" Type="Int32" />
-          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ODID" Type="Int32" />
           <Property Name="WDID" Type="Int32" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Accounts_Customers" FromRole="Accounts" ToRole="Customers" />
-          <NavigationProperty Name="OverDraftLimit" Relationship="Self.FK_Accounts_OverDraftLimits1" FromRole="Accounts" ToRole="OverDraftLimits" />
+          <NavigationProperty Name="OverDraftLimit" Relationship="Self.FK_Accounts_OverDraftLimits" FromRole="Accounts" ToRole="OverDraftLimits" />
           <NavigationProperty Name="WithDrawLimit" Relationship="Self.FK_Accounts_WithDrawLimits" FromRole="Accounts" ToRole="WithDrawLimits" />
           <NavigationProperty Name="Cards" Relationship="Self.FK_Cards_Accounts" FromRole="Accounts" ToRole="Cards" />
         </EntityType>
@@ -296,11 +251,9 @@
           <Key>
             <PropertyRef Name="ATMID" />
           </Key>
-          <Property Name="ATMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ATMID" Type="Int32" Nullable="false" />
           <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_ATMs" FromRole="ATMs" ToRole="Logs" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK_Stocks_ATMs" FromRole="ATMs" ToRole="Stocks" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -315,6 +268,15 @@
           <Property Name="Attempt" Type="Int32" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Cards_Accounts" FromRole="Cards" ToRole="Accounts" />
           <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_Cards" FromRole="Cards" ToRole="Logs" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ConID" />
+          </Key>
+          <Property Name="ConID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="MinWithDraw" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MaxWithDraw" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -333,12 +295,10 @@
           </Key>
           <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LogTypeID" Type="Int32" />
-          <Property Name="ATMID" Type="Int32" />
           <Property Name="CardNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="LogDate" Type="DateTime" Precision="3" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ATM" Relationship="Self.FK_Logs_ATMs" FromRole="Logs" ToRole="ATMs" />
           <NavigationProperty Name="Card" Relationship="Self.FK_Logs_Cards" FromRole="Logs" ToRole="Cards" />
           <NavigationProperty Name="LogType" Relationship="Self.FK_Logs_LogTypes" FromRole="Logs" ToRole="LogTypes" />
         </EntityType>
@@ -364,7 +324,7 @@
           </Key>
           <Property Name="ODID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Value" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_OverDraftLimits1" FromRole="OverDraftLimits" ToRole="Accounts" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_OverDraftLimits" FromRole="OverDraftLimits" ToRole="Accounts" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -372,20 +332,8 @@
           </Key>
           <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MoneyTypeID" Type="Int32" />
-          <Property Name="ATMID" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
-          <NavigationProperty Name="ATM" Relationship="Self.FK_Stocks_ATMs" FromRole="Stocks" ToRole="ATMs" />
           <NavigationProperty Name="MoneyType" Relationship="Self.FK_Stocks_MoneyTypes" FromRole="Stocks" ToRole="MoneyTypes" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="WithDrawLimit">
           <Key>
@@ -407,7 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Accounts_OverDraftLimits1">
+        <Association Name="FK_Accounts_OverDraftLimits">
           <End Role="OverDraftLimits" Type="Self.OverDraftLimit" Multiplicity="0..1" />
           <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -440,30 +388,6 @@
             </Principal>
             <Dependent Role="Cards">
               <PropertyRef Name="AccountID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Logs_ATMs">
-          <End Role="ATMs" Type="Self.ATM" Multiplicity="0..1" />
-          <End Role="Logs" Type="Self.Log" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATMs">
-              <PropertyRef Name="ATMID" />
-            </Principal>
-            <Dependent Role="Logs">
-              <PropertyRef Name="ATMID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stocks_ATMs">
-          <End Role="ATMs" Type="Self.ATM" Multiplicity="0..1" />
-          <End Role="Stocks" Type="Self.Stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATMs">
-              <PropertyRef Name="ATMID" />
-            </Principal>
-            <Dependent Role="Stocks">
-              <PropertyRef Name="ATMID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -503,23 +427,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ATMSystemEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ATM_SystemEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="ATMs" EntityType="Self.ATM" />
           <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="Configs" EntityType="Self.Config" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Logs" EntityType="Self.Log" />
           <EntitySet Name="LogTypes" EntityType="Self.LogType" />
           <EntitySet Name="MoneyTypes" EntityType="Self.MoneyType" />
           <EntitySet Name="OverDraftLimits" EntityType="Self.OverDraftLimit" />
           <EntitySet Name="Stocks" EntityType="Self.Stock" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="WithDrawLimits" EntityType="Self.WithDrawLimit" />
           <AssociationSet Name="FK_Accounts_Customers" Association="Self.FK_Accounts_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Accounts" EntitySet="Accounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Accounts_OverDraftLimits1" Association="Self.FK_Accounts_OverDraftLimits1">
+          <AssociationSet Name="FK_Accounts_OverDraftLimits" Association="Self.FK_Accounts_OverDraftLimits">
             <End Role="OverDraftLimits" EntitySet="OverDraftLimits" />
             <End Role="Accounts" EntitySet="Accounts" />
           </AssociationSet>
@@ -530,14 +454,6 @@
           <AssociationSet Name="FK_Cards_Accounts" Association="Self.FK_Cards_Accounts">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Cards" EntitySet="Cards" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Logs_ATMs" Association="Self.FK_Logs_ATMs">
-            <End Role="ATMs" EntitySet="ATMs" />
-            <End Role="Logs" EntitySet="Logs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Stocks_ATMs" Association="Self.FK_Stocks_ATMs">
-            <End Role="ATMs" EntitySet="ATMs" />
-            <End Role="Stocks" EntitySet="Stocks" />
           </AssociationSet>
           <AssociationSet Name="FK_Logs_Cards" Association="Self.FK_Logs_Cards">
             <End Role="Cards" EntitySet="Cards" />
@@ -551,39 +467,28 @@
             <End Role="MoneyTypes" EntitySet="MoneyTypes" />
             <End Role="Stocks" EntitySet="Stocks" />
           </AssociationSet>
-          <EntitySet Name="Configs" EntityType="ATMSystemModel.Config" />
         </EntityContainer>
-        <EntityType Name="Config">
-          <Key>
-            <PropertyRef Name="ConID" />
-          </Key>
-          <Property Name="ConID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateModified" Type="DateTime" Precision="3" />
-          <Property Name="MinWithDraw" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="MaxWithDraw" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="NumPerPage" Type="Int32" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ATMSystemModelStoreContainer" CdmEntityContainer="ATMSystemEntities">
+        <EntityContainerMapping StorageEntityContainer="ATM_SystemModelStoreContainer" CdmEntityContainer="ATM_SystemEntities">
           <EntitySetMapping Name="Accounts">
-            <EntityTypeMapping TypeName="ATMSystemModel.Account">
+            <EntityTypeMapping TypeName="ATM_SystemModel.Account">
               <MappingFragment StoreEntitySet="Accounts">
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="CustID" ColumnName="CustID" />
-                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
                 <ScalarProperty Name="ODID" ColumnName="ODID" />
                 <ScalarProperty Name="WDID" ColumnName="WDID" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ATMs">
-            <EntityTypeMapping TypeName="ATMSystemModel.ATM">
-              <MappingFragment StoreEntitySet="ATMs">
+            <EntityTypeMapping TypeName="ATM_SystemModel.ATM">
+              <MappingFragment StoreEntitySet="ATM">
                 <ScalarProperty Name="ATMID" ColumnName="ATMID" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -591,7 +496,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cards">
-            <EntityTypeMapping TypeName="ATMSystemModel.Card">
+            <EntityTypeMapping TypeName="ATM_SystemModel.Card">
               <MappingFragment StoreEntitySet="Cards">
                 <ScalarProperty Name="CardNo" ColumnName="CardNo" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -603,8 +508,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="ATM_SystemModel.Config">
+              <MappingFragment StoreEntitySet="Configs">
+                <ScalarProperty Name="ConID" ColumnName="ConID" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="MinWithDraw" ColumnName="MinWithDraw" />
+                <ScalarProperty Name="MaxWithDraw" ColumnName="MaxWithDraw" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="ATMSystemModel.Customer">
+            <EntityTypeMapping TypeName="ATM_SystemModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
                 <ScalarProperty Name="CustID" ColumnName="CustID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -615,11 +530,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logs">
-            <EntityTypeMapping TypeName="ATMSystemModel.Log">
+            <EntityTypeMapping TypeName="ATM_SystemModel.Log">
               <MappingFragment StoreEntitySet="Logs">
                 <ScalarProperty Name="LogID" ColumnName="LogID" />
                 <ScalarProperty Name="LogTypeID" ColumnName="LogTypeID" />
-                <ScalarProperty Name="ATMID" ColumnName="ATMID" />
                 <ScalarProperty Name="CardNo" ColumnName="CardNo" />
                 <ScalarProperty Name="LogDate" ColumnName="LogDate" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -628,7 +542,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogTypes">
-            <EntityTypeMapping TypeName="ATMSystemModel.LogType">
+            <EntityTypeMapping TypeName="ATM_SystemModel.LogType">
               <MappingFragment StoreEntitySet="LogTypes">
                 <ScalarProperty Name="LogTypeID" ColumnName="LogTypeID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -636,7 +550,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MoneyTypes">
-            <EntityTypeMapping TypeName="ATMSystemModel.MoneyType">
+            <EntityTypeMapping TypeName="ATM_SystemModel.MoneyType">
               <MappingFragment StoreEntitySet="MoneyTypes">
                 <ScalarProperty Name="MoneyTypeID" ColumnName="MoneyTypeID" />
                 <ScalarProperty Name="MoneyValue" ColumnName="MoneyValue" />
@@ -644,7 +558,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OverDraftLimits">
-            <EntityTypeMapping TypeName="ATMSystemModel.OverDraftLimit">
+            <EntityTypeMapping TypeName="ATM_SystemModel.OverDraftLimit">
               <MappingFragment StoreEntitySet="OverDraftLimits">
                 <ScalarProperty Name="ODID" ColumnName="ODID" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -652,42 +566,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stocks">
-            <EntityTypeMapping TypeName="ATMSystemModel.Stock">
+            <EntityTypeMapping TypeName="ATM_SystemModel.Stock">
               <MappingFragment StoreEntitySet="Stocks">
                 <ScalarProperty Name="StockID" ColumnName="StockID" />
                 <ScalarProperty Name="MoneyTypeID" ColumnName="MoneyTypeID" />
-                <ScalarProperty Name="ATMID" ColumnName="ATMID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ATMSystemModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WithDrawLimits">
-            <EntityTypeMapping TypeName="ATMSystemModel.WithDrawLimit">
+            <EntityTypeMapping TypeName="ATM_SystemModel.WithDrawLimit">
               <MappingFragment StoreEntitySet="WithDrawLimits">
                 <ScalarProperty Name="WDID" ColumnName="WDID" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Configs">
-            <EntityTypeMapping TypeName="ATMSystemModel.Config">
-              <MappingFragment StoreEntitySet="Configs">
-                <ScalarProperty Name="NumPerPage" ColumnName="NumPerPage" />
-                <ScalarProperty Name="MaxWithDraw" ColumnName="MaxWithDraw" />
-                <ScalarProperty Name="MinWithDraw" ColumnName="MinWithDraw" />
-                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
-                <ScalarProperty Name="ConID" ColumnName="ConID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

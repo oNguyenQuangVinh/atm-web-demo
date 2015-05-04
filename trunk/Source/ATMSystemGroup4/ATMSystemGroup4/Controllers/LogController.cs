@@ -14,7 +14,7 @@ namespace ATMSystemGroup4.Controllers
 {
     public class LogController : Controller
     {
-        private ATMSystemEntities db = new ATMSystemEntities();
+        private ATM_SystemEntities db = new ATM_SystemEntities();
 
 
         //
@@ -74,7 +74,7 @@ namespace ATMSystemGroup4.Controllers
         public ViewResult ViewHistory(string period, int? page)
         {
             Card card = (Card)Session["Card"];
-            var logs = db.Logs.Include(l => l.ATM).Include(l => l.Card).Include(l => l.LogType);
+            var logs = db.Logs.Include(l => l.Card).Include(l => l.LogType);
             switch (period)
             {
                 case "1 Week":
@@ -125,14 +125,14 @@ namespace ATMSystemGroup4.Controllers
             int countLogs = logs.Count();
 
             Config con = db.Configs.Find(1);
-            int pageSize = (int)con.NumPerPage;
+            int pageSize = 1;
 
             int pageNumber = (page ?? 1);
 
             ViewBag.Period = period;
             ViewBag.CountLogs = countLogs;
 
-            return View(logs.ToPagedList(pageNumber, pageSize));
+            return View(logs.ToPagedList(pageNumber,pageSize));
         }
 
         //
@@ -141,7 +141,7 @@ namespace ATMSystemGroup4.Controllers
         {
             Log log = new Log();
             log.LogTypeID = logType;
-            log.ATMID = atmID;
+            //log.ATMID = atmID;
             log.CardNo = cardNo;
             log.LogDate = DateTime.Now;
             log.Amount = amount;

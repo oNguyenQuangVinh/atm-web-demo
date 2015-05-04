@@ -9,7 +9,7 @@ namespace ATMSystemGroup4.Controllers
 {
     public class HomeController : Controller
     {
-        private ATMSystemEntities db = new ATMSystemEntities();
+        private ATM_SystemEntities db = new ATM_SystemEntities();
 
         public ActionResult Index()
         {

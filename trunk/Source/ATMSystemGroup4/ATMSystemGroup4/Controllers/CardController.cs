@@ -13,7 +13,7 @@ namespace ATMSystemGroup4.Controllers
     public class CardController : Controller
     {
         LogController lc;
-        private ATMSystemEntities db = new ATMSystemEntities();
+        private ATM_SystemEntities db = new ATM_SystemEntities();
 
         // Validate
         //
@@ -226,7 +226,7 @@ namespace ATMSystemGroup4.Controllers
             // Ghi Log cho change PIN
             lc = new LogController();
             string detailsFrom = "";
-            lc.WriteLog(4, atm.ATMID, card.CardNo, 0, detailsFrom);
+            lc.WriteLog(4, 1, card.CardNo, 0, detailsFrom);
             return RedirectToAction("SuccessTransAsking", "Home");
 
         }

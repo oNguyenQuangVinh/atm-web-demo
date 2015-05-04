@@ -16,13 +16,11 @@ namespace ATMSystemGroup4.Models
     {
         public int LogID { get; set; }
         public Nullable<int> LogTypeID { get; set; }
-        public Nullable<int> ATMID { get; set; }
         public string CardNo { get; set; }
         public Nullable<System.DateTime> LogDate { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public string Details { get; set; }
     
-        public virtual ATM ATM { get; set; }
         public virtual Card Card { get; set; }
         public virtual LogType LogType { get; set; }
     }
