@@ -251,30 +251,24 @@ namespace ATMSystemGroup4.Controllers
             // xu ly lua chon rut tien
             switch (submitButton)
             {
-                case "500":
+                case "500.000":
                     {
                         amount = 500000;
                     }
                     break;
-                case "1000":
+                case "1.000.000":
                     {
                         amount = 1000000;
                     }
                     break;
 
-                case "2000":
+                case "2.000.000":
                     {
                         amount = 2000000;
                     }
                     break;
 
-                case "2500":
-                    {
-                        amount = 2500000;
-                    }
-
-                    break;
-                case "3000":
+                case "3.000.000":
                     {
                         amount = 3000000;
                     }
