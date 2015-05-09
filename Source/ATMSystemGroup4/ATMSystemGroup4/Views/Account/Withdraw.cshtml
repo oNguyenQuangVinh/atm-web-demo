@@ -7,16 +7,41 @@
 {
     <fieldset>
         <legend>Chọn số tiền</legend>
-        <input type="submit" name="submitButton" value="500" />
-        <input type="submit" name="submitButton" value="1000" />
-        <input type="submit" name="submitButton" value="2000" />
-        <input type="submit" name="submitButton" value="2500" />
-        <input type="submit" name="submitButton" value="3000" />
-        <input type="submit" name="submitButton" value="Other" />
+        <table>
+            <tr>
+                <td>
+                    <input type="submit" name="submitButton" value="500.000" style="border-style:none; background-color:transparent" />
+                </td>
+                <td width="300px" style="background-color:transparent"></td>
+                <td>
+                    <input type="submit" name="submitButton" value="1.000.000" style="border-style:none; background-color:transparent" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" name="submitButton" value="2.000.000" style="border-style:none; background-color:transparent" />
+                </td>
+                <td width="300px" style="background-color:transparent"></td>
+                <td>
+                    <input type="submit" name="submitButton" value="3.000.000" style="border-style:none; background-color:transparent" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td width="300px" style="background-color:transparent">
+
+                </td>
+                <td><input type="submit" name="submitButton" value="Other" style="border-style:none; background-color:transparent" />
+                </td>
+            </tr>
+        </table>
+
+
         <br />
         <p><a id="message">@ViewBag.Error</a></p>
         @ViewBag.money
 
     </fieldset>
-         
+
 }
