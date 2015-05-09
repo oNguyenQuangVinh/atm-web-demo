@@ -2,11 +2,11 @@
     ViewBag.Title = "Chọn Chức Năng";
 }
 @section Header{
-    <li>@Html.ActionLink("Withdraw", "Withdraw", "Account")</li>
-    <li>@Html.ActionLink("Check Balance", "CheckBalanceMenu", "Account")</li>
-    <li>@Html.ActionLink("Transfer Cash", "TransferCashID", "Account")</li>
-    <li>@Html.ActionLink("View History", "SelectPeriod", "Log")</li>
-    <li>@Html.ActionLink("Change PIN", "ChangePINold", "Card")</li>
+    @*@Html.ActionLink("Rút tiền", "Withdraw", "Account")
+    @Html.ActionLink("Kiểm tra số dư", "CheckBalanceMenu", "Account")
+    @Html.ActionLink("Chuyển tiền", "TransferCashID", "Account")
+    @Html.ActionLink("Xem lịch sử giao dịch", "SelectPeriod", "Log")
+    @Html.ActionLink("Đổi mã PIN", "ChangePINold", "Card")*@
 }
 <h2>@ViewBag.Message</h2>
 
@@ -14,6 +14,29 @@
     @ViewBag.Inviting
 </p>
 <div>
+    <table id="menu">
+        <tr>
+            <td>
+                @Html.ActionLink("Rút tiền", "Withdraw", "Account")
+            </td>
+            <td width="300px" style="background-color:transparent">
+
+            </td>
+            <td>
+                @Html.ActionLink("Kiểm tra số dư", "CheckBalanceMenu", "Account")
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Chuyển tiền", "TransferCashID", "Account")</td>
+            <td width="300px" style="background-color:transparent">
+<td>@Html.ActionLink("Xem lịch sử giao dịch", "SelectPeriod", "Log")</td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Đổi mã PIN", "ChangePINold", "Card")</td>
+            <td width="300px" style="background-color:transparent">
+<td></td>
+        </tr>
+    </table>
     <p>
         @Html.ActionLink("Kết thúc giao dịch", "Exit", "Home")
     </p>
