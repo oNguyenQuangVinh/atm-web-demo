@@ -9,36 +9,44 @@
 <fieldset>
     <legend>Lịch sử @ViewBag.Period trước (Có @ViewBag.CountLogs bản ghi )</legend>
 
-    <table>
+    <table style="background-color:transparent; color:blue">
         <tr>
-            <th>ATM (Địa điểm)
+            <th style="background-color:transparent; color:blue">
+                ATM (Địa điểm)
             </th>
-            <th>LogType
+            <th style="background-color:transparent; color:blue">
+                LogType (Loại giao dịch)
             </th>
-            <th>LogDate
+            <th style="background-color:transparent; color:blue">
+                LogDate (Ngày giao dịch)
             </th>
-            <th>Số tiền (VNĐ)
+            <th style="background-color:transparent; color:blue">
+                Số tiền (VNĐ)
             </th>
-            <th>Chi tiết
+            <th style="background-color:transparent; color:blue">
+                Chi tiết
             </th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => i)
+                </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => 1)
+                    1
                 </td>
-                <td>
+                <td style="background-color:transparent; color:black">
                     @Html.DisplayFor(modelItem => item.LogType.Description)
                 </td>
-                <td>
+                <td style="background-color:transparent; color:black">
                     @Html.DisplayFor(modelItem => item.LogDate)
                 </td>
-                <td>
+                <td style="background-color:transparent; color:black">
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
-                <td>
+                <td style="background-color:transparent; color:black">
                     @Html.DisplayFor(modelItem => item.Details)
                 </td>
             </tr>
@@ -48,7 +56,7 @@
 
     <br />
     <div id="page">
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        Page @(Model.PageCount < Model.PageNumber ? 1 : Model.PageNumber) of @Model.PageCount
         @Html.PagedListPager(Model, page => Url.Action("ViewHistory", "Log", new { page = page, period = @ViewBag.Period }))
     </div>
 </fieldset>
