@@ -366,3 +366,29 @@ D:\ATMSystemGroup4\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Razor
 D:\ATMSystemGroup4\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.csprojResolveAssemblyReference.cache
 D:\ATMSystemGroup4\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.dll
 D:\ATMSystemGroup4\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.pdb
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\ATMSystemGroup4.dll.config
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\ATMSystemGroup4.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\ATMSystemGroup4.pdb
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\EntityFramework.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.Mvc.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Helpers.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Mvc.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Providers.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Razor.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Deployment.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Razor.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.Mvc.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\EntityFramework.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Helpers.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Mvc.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Razor.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Deployment.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Razor.xml
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.csprojResolveAssemblyReference.cache
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.dll
+C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.pdb
