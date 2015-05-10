@@ -42,23 +42,23 @@ namespace ATMSystemGroup4.Controllers
         {
             switch (submitButton)
             {
-                case "1 Week ago":
-                    return RedirectToAction("ViewHistory", new { period = "1 Week" });
+                case "1 tuần trước":
+                    return RedirectToAction("ViewHistory", new { period = "1 tuần" });
 
-                case "1 Month ago":
-                    return RedirectToAction("ViewHistory", new { period = "1 Month" });
+                case "1 tháng trước":
+                    return RedirectToAction("ViewHistory", new { period = "1 tháng" });
 
-                case "4 Months ago":
-                    return RedirectToAction("ViewHistory", new { period = "4 Months" });
+                case "4 tuần trước":
+                    return RedirectToAction("ViewHistory", new { period = "4 tháng" });
 
-                case "6 Months ago":
-                    return RedirectToAction("ViewHistory", new { period = "6 Months" });
+                case "6 tuần trước":
+                    return RedirectToAction("ViewHistory", new { period = "6 tháng" });
 
-                case "1 Year ago":
-                    return RedirectToAction("ViewHistory", new { period = "1 Year" });
+                case "1 năm trước":
+                    return RedirectToAction("ViewHistory", new { period = "1 năm" });
 
-                case "2 Years ago":
-                    return RedirectToAction("ViewHistory", new { period = "2 Years" });
+                case "2 năm trước":
+                    return RedirectToAction("ViewHistory", new { period = "2 năm" });
 
                 default:
                     return View();
@@ -77,42 +77,42 @@ namespace ATMSystemGroup4.Controllers
             var logs = db.Logs.Include(l => l.Card).Include(l => l.LogType);
             switch (period)
             {
-                case "1 Week":
+                case "1 tuần":
                     logs = from l in db.Logs
                            where SqlFunctions.DateDiff("dd", l.LogDate, DateTime.Now) <= 7
                            && l.CardNo == card.CardNo
                            select l;                    
                     break;
 
-                case "1 Month":
+                case "1 tháng":
                     logs = from l in db.Logs
                            where SqlFunctions.DateDiff("dd", l.LogDate, DateTime.Now) <= 30
                            && l.CardNo == card.CardNo
                            select l;                  
                     break;
 
-                case "4 Months":
+                case "4 tháng":
                     logs = from l in db.Logs
                            where SqlFunctions.DateDiff("dd", l.LogDate, DateTime.Now) <= 120
                            && l.CardNo == card.CardNo
                            select l;                   
                     break;
 
-                case "6 Months":
+                case "6 tháng":
                     logs = from l in db.Logs
                            where SqlFunctions.DateDiff("dd", l.LogDate, DateTime.Now) <= 180
                            && l.CardNo == card.CardNo
                            select l;                    
                     break;
 
-                case "1 Year":
+                case "1 năm":
                     logs = from l in db.Logs
                            where SqlFunctions.DateDiff("dd", l.LogDate, DateTime.Now) <= 365
                            && l.CardNo == card.CardNo
                            select l;                   
                     break;
 
-                case "2 Years":
+                case "2 năm":
                     logs = from l in db.Logs
                            where SqlFunctions.DateDiff("dd", l.LogDate, DateTime.Now) <= 700
                            && l.CardNo == card.CardNo
@@ -125,9 +125,9 @@ namespace ATMSystemGroup4.Controllers
             int countLogs = logs.Count();
 
             Config con = db.Configs.Find(1);
-            int pageSize = 1;
+            int pageSize = 5;
 
-            int pageNumber = (page ?? 1);
+            int pageNumber = (page ?? 5);
 
             ViewBag.Period = period;
             ViewBag.CountLogs = countLogs;
