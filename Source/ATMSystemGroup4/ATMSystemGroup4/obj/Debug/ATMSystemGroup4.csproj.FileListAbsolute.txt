@@ -392,3 +392,29 @@ C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\bin\
 C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.csprojResolveAssemblyReference.cache
 C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.dll
 C:\Users\MinhTuuu\Desktop\New folder\Source\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.pdb
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\ATMSystemGroup4.dll.config
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\ATMSystemGroup4.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\ATMSystemGroup4.pdb
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\EntityFramework.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\Microsoft.Web.Infrastructure.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.Mvc.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Helpers.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Mvc.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Providers.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Razor.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Deployment.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Razor.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\PagedList.Mvc.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\EntityFramework.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Helpers.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Mvc.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.Razor.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Deployment.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\bin\System.Web.WebPages.Razor.xml
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.csprojResolveAssemblyReference.cache
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.dll
+D:\Study\ATMSystemGroup4\ATMSystemGroup4\obj\Debug\ATMSystemGroup4.pdb
