@@ -48,10 +48,10 @@ namespace ATMSystemGroup4.Controllers
                 case "1 tháng trước":
                     return RedirectToAction("ViewHistory", new { period = "1 tháng" });
 
-                case "4 tuần trước":
+                case "4 tháng trước":
                     return RedirectToAction("ViewHistory", new { period = "4 tháng" });
 
-                case "6 tuần trước":
+                case "6 tháng trước":
                     return RedirectToAction("ViewHistory", new { period = "6 tháng" });
 
                 case "1 năm trước":
