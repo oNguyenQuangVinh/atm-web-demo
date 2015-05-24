@@ -57,10 +57,10 @@ namespace ATMSystemGroup4.Controllers
         {
             switch (submitButton)
             {
-                case "Yes":
+                case "CÓ":
                     return RedirectToAction("Main", "Home");
 
-                case "No":
+                case "KHÔNG":
                     return RedirectToAction("Index", "Home");
 
                 default:
