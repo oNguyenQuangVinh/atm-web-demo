@@ -39,6 +39,7 @@ namespace ATMSystemGroup4.Controllers
                     if (card.Attempt < 3)
                     {
                         Session["Card"] = card;
+                        Session["CardNo"] = card.CardNo;
                         return RedirectToAction("Authenticate");
                     }
                     else
@@ -83,6 +84,7 @@ namespace ATMSystemGroup4.Controllers
                 {
                     if (card.PIN.Equals(pin) && card.Attempt < 3)
                     {
+                        Session["CardPin"] = pin;
                         card.Attempt = 0;
                         db.Entry(card).State = EntityState.Modified;
                         db.SaveChanges();

@@ -26,16 +26,17 @@ namespace ATMSystemGroup4.Controllers
         {
             Card card = (Card)Session["Card"];
             ATM atm = (ATM)Session["ATM"];
-            if ((card != null) && (atm != null))
+            string pin = (string)(Session["CardPin"]);
+            if (pin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
             {
                 Account account = db.Accounts.Find(card.AccountID);
                 Customer customer = db.Customers.Find(account.CustID);
                 ViewBag.Message = "Xin chào khách hàng: " + customer.Name + " - đến với ATM tại " + atm.Address;
                 ViewBag.Inviting = "Xin vui lòng chọn chức năng ! ";
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -57,10 +58,10 @@ namespace ATMSystemGroup4.Controllers
         {
             switch (submitButton)
             {
-                case "CÓ":
+                case "Yes":
                     return RedirectToAction("Main", "Home");
 
-                case "KHÔNG":
+                case "No":
                     return RedirectToAction("Index", "Home");
 
                 default:
